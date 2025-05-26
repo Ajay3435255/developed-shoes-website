@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclat | Luxury Footwear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #17e13c;
+            --text: #333333;
+            --light-bg: #fffefed1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--secondary);
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-accent:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: rgba(248, 154, 3, 0.929);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--secondary);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            color: var(--secondary);
+            margin-left: 20px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-icons a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 130vh;
+            background: url('https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/257ad795-9783-4656-a329-d8fbb3fbda7b/G.T.+CUT+3+TURBO+EP.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: var(--secondary);
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 100px 0;
+            background: var(--light-bg);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .featured-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: var(--secondary);
+        }
+
+        .featured-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .featured-overlay p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Craftsmanship Section */
+        .craftsmanship {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .craftsmanship p {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .craftsmanship-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .craftsmanship-item {
+            padding: 30px;
+        }
+
+        .craftsmanship-item i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .craftsmanship-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .craftsmanship-item p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: var(--primary);
+            color: var(--secondary);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #6608e2;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: var(--secondary);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--secondary);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--secondary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-content {
+                width: 60%;
+            }
+
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .craftsmanship-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero-content {
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .craftsmanship-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .newsletter-form button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">௹ROYALE<span>SUN↩</span></a>
+
+            <nav id="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Craftsmanship</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>'INDIA BEST LUXURY BRAND SHOES MEN,</h1>
+            <p>developed by ❤️anil saini in website the nike best shoes in men collection luxury footwear,💕 .</p>
+            <div class="hero-btns">
+                <a href="#" class="btn">Shop Now</a>
+                <a href="#" class="btn btn-accent">Explore Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">NIKE SHOES COLLECTION👟👟</h2>
+
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                        alt="Luxury Heels">
+                    <div class="featured-overlay">
+                        <h3>Nike grils footwear</h3>
+                        <p>nike grils </p>
+                    </div>
+                </div>
+
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Gentleman's Choice</h3>
+                        <p>Nike BRAND</p>
+                    </div>
+                </div>
+
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80"
+                        alt="Casual Luxury">
+                    <div class="featured-overlay">
+                        <h3>Urban Sophistication</h3>
+                        <p>nike brand shoes</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f278e36a-db77-4574-88b6-58c14eb89e69/NIKE+VOMERO+18+%28GS%29.png"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Nike shoes</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/d1a1880a-6f23-4c9e-b057-d6cd8a72c42b/NIKE+AIR+WINFLO+11.png"
+                        alt="nike brand shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE BRAND MEN </h3>
+                        <p>Premium shoes</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/88c35e4e-9a89-4ced-8247-c194da41b173/NIKE+VOMERO+18.png"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Nike running shoes</h3>
+                        <p>Premium brand</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/40af7803-7b83-45fb-96bc-69a9760c2ac6/AIR+ZOOM+PEGASUS+41.png"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Nike Zoom</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://image.made-in-china.com/2f0j00zgtqsjVROfuS/Jordans1-Sneakers-Basketball-Shoes-Brand-Men-Fashion-Sports-Shoes-Nike-Factory-in-China.webp"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Luxury Nike USA</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://5.kixify.com/sites/default/files/imagecache/product_full/product/2023/08/09/p_34685326_199463767_111814.jpg"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Luxury brand </h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://s1.dswcdn.com/uploads/Nike_Other_Shoes/Nike_Daybreak_Type_White_Clay_Red_CJ1156-102_P1.jpg"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Nike sport shoes</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20250324/o3Cg/67e165e555340d4b4f858273/-473Wx593H-469750792-white-MODEL.jpg"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>sport shoes</h3>
+                        <p>Premium </p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://m.media-amazon.com/images/I/517xdSbVQsL.jpg" alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Nike runnig shoes</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_3.0/h_300,c_limit/e00a446a-ff03-4311-b531-7bc04cb0860b/gt-hustle-academy-ep-basketball-shoes-dTknbG.png"
+                        alt="Men's Loafers">
+                    <div class="featured-overlay">
+                        <h3>Nike footwear</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://cdn.sneakers123.com/release/15325919/nike-air-zoom-gt-cut-3-university-swoosh-squad-dv2913-001dv2918-001.jpg"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>Nike USA</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/h_467,c_limit/a2b6c997-7368-439d-a421-3777f410b630/kd18-ep-basketball-shoes-CVlJhR.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>Nike branding</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/h_467,c_limit/48d0a642-d7a8-4c6f-9ad0-11ddb2c5c326/kd18-eybl-ep-basketball-shoes-3QK7GZu8.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>sport runing shoes</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/h_467,c_limit/3ac0103d-c91f-43f9-977d-5e6efe754ca9/tatum-3-pf-tunnel-walk-basketball-shoes-4dGWHCL5.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>sport tunnel</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/h_467,c_limit/53b2d57a-2b58-472b-8e75-ea6d9e8a356c/kd17-ep-basketball-shoes-7MqWLD.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>KD 17 SHOES</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1190bf7e-4cc2-4d48-9e7f-ba603bc83657/NIKE+VOMERO+18+SE.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE ZOOM 17 SHOES</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f39f53f3-3c79-4d30-85d0-29e75251c8d2/PEGASUS+PLUS.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>RUNING 12 SHOES</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/46a8f510-abfc-4d17-b9e7-0d9d3b08d2ef/NIKE+DOWNSHIFTER+13.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE BRAND 12 SHOES</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/28f851c2-b0ce-4db9-8cd1-2fd0261b13c8/NIKE+MOTIVA.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE MOTIVITA</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e786340e-8d79-465a-824f-4ed3b7ad67e9/REACTX+PEGASUS+TRAIL+5+GTX+SP.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE TRILR 5G</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f4d7fb6b-6aea-4fab-8f3b-80929d5835f8/NIKE+MOTIVA.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE SHARK </h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/92ccf05d-d067-44f2-847d-5cbf81deda9a/BOOK+1+EP.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>BOOK EP 1 NIKE </h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ecb1d824-851b-4d07-a022-543704cdc0c7/JORDAN+COURTSIDE+23.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>JORDAN NIKE BRAND </h3>
+                        <p>USA luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/27a9aadc-46a8-4cf9-9aa2-f8f3072ddd54/NIKE+AIR+MAX+PLUS.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE AIR MAX PLUSH</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e6ad1862-513f-444c-b867-8e2f206d17fc/AIR+JORDAN+1+RETRO+LOW+OG.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE JORDAN AIR TOP</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a85796ae-9a7d-4143-b00c-3b2d6a881f7c/NIKE+WAFFLE+NAV.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE WAFFILE NAV</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/3bc93a5f-e131-47f4-b722-8808f54c0087/JORDAN+SPIZIKE+LOW.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE SPIZIKE LOW</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d4d3036d-63d7-49ab-a0b2-dd2231f1854a/AIR+JORDAN+11+RETRO.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE RETRO 11 </h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c5b72563-8884-442c-9def-29e05bd309ea/AIR+JORDAN+XXXIX+PF.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE JORDAN XXXPIE13</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4e955db3-606c-44c4-9c9a-f679147daf38/JORDAN+LUKA+3+PF.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE LUKA SPORTS</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/c710c0cc-f87d-4be4-bd49-509cc41532cd/KD17+EP.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE KD17 ASW</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1419de02-2ad9-4bd6-a603-c94ed3939f19/JA+2+EP.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE JA2 SKY PURPLE</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/33f704f1-4d00-4d6e-8186-d6e8532c0d43/JORDAN+DAY1+E.O.+%28GS%29.png"
+                        alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE JORDAN A12</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4adf7f65-16dc-421d-809c-90224808d568/W+NIKE+DOWNSHIFTER+13.png" alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE DOWNSHIFTER A13</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/9b858364-80bf-42e6-a958-6edadd62821d/W+NIKE+V2K+RUN.png" alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE V2K RUN</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4dcd142e-e881-4d3f-9c4d-18c618c6036a/NIKE+QUEST+5.png" alt="stylish shoes">
+                    <div class="featured-overlay">
+                        <h3>NIKE SPOERTS SHOES</h3>
+                        <p>Premium luxury</p>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Craftsmanship Section -->
+    <section class="craftsmanship">
+        <div class="container">
+            <h2 class="section-title">👟👟_DEVELOPMENT_SHOES_WEBSITE-NIKE-BRAND💫</h2>
+            <p>Each pair of Éclat shoes is a masterpiece, meticulously crafted by our artisans using techniques
+                perfected over generations. We combine premium materials with innovative design to create footwear that
+                stands the test of time.</p>
+
+            <div class="craftsmanship-grid">
+                <div class="craftsmanship-item">
+                    <i class="fas fa-gem"></i>
+                    <h3>Premium Materials</h3>
+                    <p>Only the finest Italian leathers and exotic materials selected for their quality and durability.
+                    </p>
+                </div>
+
+                <div class="craftsmanship-item">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <h3>Handcrafted</h3>
+                    <p>Each pair undergoes 200+ meticulous steps by our master craftsmen in Florence, Italy.</p>
+                </div>
+
+                <div class="craftsmanship-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Perfect Fit</h3>
+                    <p>Engineered for comfort with patented arch support and ergonomic design principles.</p>
+                </div>
+
+                <div class="craftsmanship-item">
+                    <i class="fas fa-award"></i>
+                    <h3>Lifetime Care</h3>
+                    <p>Complimentary cleaning and repair services to maintain your investment for years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our World</h2>
+            <p>Subscribe to receive exclusive access to new collections, private events, and special offers.</p>
+
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ÉCLAT</h3>
+                    <p>THE 2025 DEVELOPED, Éclat represents the pinnacle of luxury footwear, combining timeless elegance
+                        with uncompromising quality.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">Women's Collection</a></li>
+                        <li><a href="#">Men's Collection</a></li>
+                        <li><a href="#">Limited Editions</a></li>
+                        <li><a href="#">Made to Order</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Visit Us</h3>
+                    <p>Flagship Boutique:<br>
+                        123 Via Della Moda<br>
+                        Milan, Italy 20121</p>
+                    <p>Monday - Saturday: 10AM - 8PM</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025Éclat Luxury Footwear. All rights reserved. | <a href="#">Privacy Policy</a> | <a
+                        href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+                // Header Scroll Effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', function () {
+            nav.classList.toggle('active');
+            menuToggle.innerHTML = nav.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+    </script>
+</body>
+
+</html>
